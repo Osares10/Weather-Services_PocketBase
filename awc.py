@@ -66,7 +66,7 @@ else:
             "station_id": airport_code,
             "observation_time": datetime.strptime(row[headers.index("observation_time")], "%Y-%m-%dT%H:%M:%SZ").strftime("%Y-%m-%d %H:%M:%S.000Z"),
             "temp_c": float(row[headers.index("temp_c")]),
-            "dewpoint_c": float(row[headers.index("dewpoint_c")]),
+            "dewpoint_c": float(row[headers.index("dewpoint_c")]) if row[headers.index("dewpoint_c")] else 99, # Set to 99 if dewpoint_c is empty
             "wind_dir_degrees": int(row[headers.index("wind_dir_degrees")]) if row[headers.index("wind_dir_degrees")] else 0,
             "wind_speed_kt": int(row[headers.index("wind_speed_kt")]) if row[headers.index("wind_speed_kt")] else 0,
             "altim_in_hg": float(row[headers.index("altim_in_hg")]),
